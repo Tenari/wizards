@@ -1,0 +1,59 @@
+{
+	"camera": {
+		"metadata": {
+			"version": 4.3,
+			"type": "Object",
+			"generator": "ObjectExporter"
+		},
+		"object": {
+			"uuid": "22CD4984-7802-4066-BC05-77AED1F25957",
+			"type": "PerspectiveCamera",
+			"name": "Camera",
+			"fov": 50,
+			"aspect": 1.6504347826086956,
+			"near": 0.1,
+			"far": 100000,
+			"matrix": [0.7071067690849304,-2.0417514345894006e-9,-0.7071067690849304,0,-0.2357022613286972,0.9428090453147888,-0.2357022613286972,0,0.6666666865348816,0.3333333432674408,0.6666666865348816,0,237.942626953125,118.9713134765625,237.942626953125,1]
+		}
+	},
+	"scene": {
+		"metadata": {
+			"version": 4.3,
+			"type": "Object",
+			"generator": "ObjectExporter"
+		},
+		"geometries": [
+			{
+				"uuid": "10D6760D-F621-4366-B0BF-E8C88004D313",
+				"type": "BoxGeometry",
+				"width": 50,
+				"height": 100,
+				"depth": 50,
+				"widthSegments": 1,
+				"heightSegments": 1,
+				"depthSegments": 1
+			}],
+		"materials": [
+			{
+				"uuid": "52868CB0-9D63-481E-898A-2D4523B480C1",
+				"type": "MeshNormalMaterial",
+				"shading": 2
+			}],
+		"object": {
+			"uuid": "3741222A-BD8F-401C-A5D2-5A907E891896",
+			"type": "Scene",
+			"name": "Scene",
+			"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+			"children": [
+				{
+					"uuid": "09924F82-E368-4F90-B97B-6F6701925925",
+					"type": "Mesh",
+					"name": "Box 1",
+					"geometry": "10D6760D-F621-4366-B0BF-E8C88004D313",
+					"material": "52868CB0-9D63-481E-898A-2D4523B480C1",
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]
+				}]
+		}
+	},
+	"scripts": {}
+}
