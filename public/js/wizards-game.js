@@ -19,6 +19,11 @@ socket.on('startGame', function( data ) { // the 'OK, game has been joined, now 
   // do the three js initialization based on what the server told us to do
   startGame(data.path);
 });
+socket.on('state change', function(data, fn) {
+  console.log(data);
+  scene.children[0].position.x += data.diff;
+  fn();
+});
 
 function startGame(path) {
   var getter = new THREE.XHRLoader();
