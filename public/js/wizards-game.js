@@ -19,10 +19,11 @@ socket.on('startGame', function( data ) { // the 'OK, game has been joined, now 
   // do the three js initialization based on what the server told us to do
   startGame(data.path);
 });
-socket.on('state change', function(data, fn) {
+socket.on('state change', function(data) {
   console.log(data);
-  scene.children[0].position.x += data.diff;
-  fn();
+  for( var i = 0; i < data.length; i++) {
+    DeepDiff.applyChange(scene, true, data[i]);
+  }
 });
 
 function startGame(path) {
@@ -76,7 +77,7 @@ var animate = function ( time ) {
   request = requestAnimationFrame( animate );
   // send events to the server
   if (eventRecord.length > 0) {
-    socket.emit('events', {list: eventRecord});
+    socket.emit('events', eventRecord);
     eventRecord = []; // kill the events we just emitted
   }
   // render the image

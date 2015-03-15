@@ -4,7 +4,8 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/reset.css')
     link(rel='stylesheet', href='/stylesheets/main.css')
-  body
+    script(src='/lib/deep-diff-0.3.0.min.js')
     script(src='/lib/three.min.js')
     script(src='/socket.io/socket.io.js')
+  body
     block content
