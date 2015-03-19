@@ -20,12 +20,7 @@ module.exports = function(sio){
       console.log('- socket.io:: client disconnected ' + client.userid );
     });
     client.on('events', function(eventList){
-      /*var typelist = [];
-      for (var i =0; i< data.list.length; i++) {
-        typelist.push(data.list[i].type)
-      }
-      console.log(typelist);*/
-      gameInstance.applyInput(eventList); 
+      gameInstance.applyInput(eventList, gameInstance.gid, gameInstance.pid); 
     })
   });
 }

@@ -21,10 +21,18 @@ socket.on('startGame', function( data ) { // the 'OK, game has been joined, now 
 });
 socket.on('state change', function(data) {
   console.log(data);
-  for( var i = 0; i < data.length; i++) {
-    DeepDiff.applyChange(scene, true, data[i]);
-  }
+  ThreeChange.applyList(scene, data);
 });
+socket.on('add object', addObject);
+
+function addObject(data) {
+  if (scene) {
+    var loader = new THREE.ObjectLoader();
+    scene.add(loader.parse(data));
+  } else {
+    setTimeout(function(){addObject(data)}, 100);
+  }
+}
 
 function startGame(path) {
   var getter = new THREE.XHRLoader();
