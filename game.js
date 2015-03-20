@@ -22,7 +22,7 @@ function createNewGame(data){
   setInterval(function(){
     // if there were differences, emit the diffs
     if (instance.changes.length > 0) { 
-      console.log(instance.changes);
+      //console.log('obj '+instance.changes[0].path[1]+' xpos = '+instance.changes[0].val);
       for(var i =0; i < instance.players.length; i++){
         instance.players[i].emit('state change', instance.changes);
       }
