@@ -65,15 +65,9 @@ module.exports = function(data){
         move_total -= 10;
     }
     if(move_total == 0) return;
-    console.log('gid: '+gid);
-    console.log('playerPos: '+playerPos);
-    console.log('gameList.length: '+gameList.length);
-    console.log(g.children.length);
+    console.log('gid: '+gid+' playerPos: '+playerPos+' gameList.length: '+gameList.length);
     var chng = tc.edit(g, ['children',playerPos,'position', 'x'], move_total+g.children[playerPos].position.x);
     gameList[gid].changes.push(chng);
-    if (playerPos == 1) {
-      console.log(g.children[playerPos].position);
-    }
   }
 
   return {
