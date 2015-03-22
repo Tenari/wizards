@@ -10,12 +10,13 @@ var request
   , futureBuffer = [] // a list of server-given states that we use for interpolation
   , pastState = {changes: [], time: Date.now(), coming: [], lag: 40} // a container for a list of changes that occured in the past
   , globalLerpTime = 100
+  , instance
   ;
 // socket.io stuff
 socket.on('startGame', function( data ) { // the 'OK, game has been joined, now you need to init it' message from the server
   //Note that the data is the object we sent from the server, as is. So we can assume its id exists. 
-  console.log( 'Connected successfully to the socket.io server. My server side ID is ' + data.uuid );
-  uid = data.uuid;
+  console.log( 'Connected successfully to the socket.io server. My server side ID is ' + data.pid );
+  uid = data.pid;
   // do the three js initialization based on what the server told us to do
   startGame(data.path);
 });
@@ -52,6 +53,7 @@ function initGame(data){
   var loader = new THREE.ObjectLoader();
   scene = loader.parse(data.scene); //new THREE.Scene();
   camera = loader.parse(data.camera);//new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+  instance = new WizGame(null, scene, null, true);
 
   renderer = new THREE.WebGLRenderer( { antialias: true } ); // has to be available to animate
   renderer.setPixelRatio( window.devicePixelRatio );
@@ -91,7 +93,8 @@ var animate = function ( time ) {
   // send events to the server
   if (eventRecord.length > 0) {
     socket.emit('events', eventRecord);
-    eventRecord = []; // kill the events we just emitted
+    instance.processInput(eventRecord, uid);
+    eventRecord.length = 0; // kill the events we just emitted
   }
   // clean up the futureBuffer to ensure that everything there actually is in the future
   cleanFutureBuffer();

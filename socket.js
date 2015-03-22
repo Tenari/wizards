@@ -1,12 +1,10 @@
 var UUID = require('node-uuid')
   , fs = require('fs')
-  , three = require('./game')
+  , three = require('./games')
 ;
 module.exports = function(sio){
   sio.sockets.on('connection', function (client) {
-    client.userid = UUID();
     var gameData = {
-      uuid: client.userid,
       path: '/data/app.json'
     }
     , clientGameData = JSON.parse(JSON.stringify(gameData))
@@ -14,6 +12,7 @@ module.exports = function(sio){
     ;
     gameData.client = client;
     gameInstance = three(gameData)
+    clientGameData.pid = gameInstance.pid;
     client.emit('startGame',  clientGameData);
     console.log('- socket.io:: player ' + client.userid + ' connected');
     client.on('disconnect', function () {
