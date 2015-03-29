@@ -16,6 +16,9 @@ function createNewGame(data){
   instance.g = initGame( require('./public'+data.path) );
   // use a setInterval as the main game loop
   setInterval(function(){
+    // apply the default game logic
+    instance.tickForward();
+    // apply the user-based game logic
     // if there were differences, emit the diffs
     if (instance.changes.length > 0) { 
       //console.log('obj '+instance.changes[0].path[1]+' xpos = '+instance.changes[0].val);

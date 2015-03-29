@@ -96,6 +96,7 @@ var animate = function ( time ) {
     instance.processInput(eventRecord, uid);
     eventRecord.length = 0; // kill the events we just emitted
   }
+  instance.tickForward();
   // clean up the futureBuffer to ensure that everything there actually is in the future
   cleanFutureBuffer();
   // update game state with interpolation

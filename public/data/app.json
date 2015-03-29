@@ -49,6 +49,9 @@
 					"uuid": "09924F82-E368-4F90-B97B-6F6701925925",
 					"type": "Mesh",
 					"name": "Box 1",
+          "userData": {
+            "velocity": [0,0,0]
+          },
 					"geometry": "10D6760D-F621-4366-B0BF-E8C88004D313",
 					"material": "52868CB0-9D63-481E-898A-2D4523B480C1",
 					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]

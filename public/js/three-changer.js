@@ -104,5 +104,6 @@ var ThreeChange = {};
 
 })();
 
-if (module) // export for node
+try {
   module.exports = ThreeChange;
+} catch (e){}
